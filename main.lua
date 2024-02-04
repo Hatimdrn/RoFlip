@@ -220,11 +220,23 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 						
 					end
 					
-					wait(5)
+					local ProccessingConnection
 					
-					ChatSay("RoFlip | Ready for trade")
+					wait(0.2)
 					
-					Trading = false
+					ProccessingConnection = TradeGUI.Processing.Changed:Connect(function()
+						
+						if TradeGUI.Processing.Visible == false then
+							
+							ChatSay("RoFlip | Ready for trade")
+
+							Trading = false
+							
+							ProccessingConnection:Disconnect()
+							
+						end
+						
+					end)
 
 				end
 
@@ -242,7 +254,7 @@ spawn(function()
 
 	while wait(0.1) do
 
-		if _G.FAF == true then
+		if _G.RoFlipBot == true then
 
 			c:Disconnect()
 
