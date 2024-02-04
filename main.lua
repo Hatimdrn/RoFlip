@@ -1,6 +1,4 @@
 
-_G.FAF = false
-
 -- Services
 
 local HTTPService = game:GetService("HttpService")
@@ -99,6 +97,12 @@ end
 -- Lets go!
 
 ChatSay("RoFlip | Bot is now starting...")
+
+_G.RoFlipBot = true
+
+wait(2)
+
+_G.RoFlipBot = false
 
 Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubusercontent.com/AlreadyMAKS/RoFlip/main/items.json"))
 
