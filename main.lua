@@ -12,6 +12,8 @@ local Token = "4bb22d00-28aa-40ab-bc65-c651d77c3ccd"
 local Trading = false
 
 local Items
+local Overrides
+local WithdrawQueue = {}
 
 -- Links
 
@@ -28,6 +30,34 @@ local TradeGUI = PlayerGui.TradeGUI
 local function ChatSay(Message)
 
 	game.ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents").SayMessageRequest:FireServer(Message,"normalchat")
+
+end
+
+local function GetRealItemName(Name)
+	
+	for RealName, Value in pairs(Overrides.Item) do
+		
+		if Value.ItemName == Name then
+			
+			return RealName
+			
+		end
+		
+	end
+	
+end
+
+local function GetItemNameById(Id)
+
+	for _,Item in pairs(Items) do
+
+		if Item.ID == Id then
+
+			return GetRealItemName(Item.ItemName)
+
+		end
+
+	end
 
 end
 
@@ -68,33 +98,45 @@ local function AddItems(ID : number, Items : table)
 
 end
 
---local function UpdateWithdrawQueue()
+local function UpdateWithdrawQueue()
 
---	local Request = HTTPService:RequestAsync(
+	local Request = HTTPService:RequestAsync(
 
---		{
+		{
 
---			Method = "GET",
---			Url = "https://roflip.org/api/public/withdrawal/getAllIncoming",
---			Headers = {
---				["X-API-KEY"] = Token
---			}
+			Method = "GET",
+			Url = "https://roflip.org/api/public/withdrawal/getAllIncoming",
+			Headers = {
+				["X-API-KEY"] = Token
+			}
 
---		}
+		}
 
---	)
+	)
 
---	if Request.StatusCode == 200 then
+	if Request.StatusCode == 200 then
 
---		for _, Data in pairs(HTTPService:JSONDecode(Request.Body)) do
+		for _, Data in pairs(HTTPService:JSONDecode(Request.Body)) do
 
---			table.insert(WithdrawQueue, Data)
+			local PlayerUserId = tostring(Data.user.roblox_data.roblox_id)
 
---		end
+			if WithdrawQueue[PlayerUserId] == nil then
 
---	end
+				WithdrawQueue[PlayerUserId] = {}
 
---end
+			end
+
+			for _, Item in pairs(Data.user_items) do
+
+				table.insert(WithdrawQueue[PlayerUserId], Item.id)
+
+			end
+
+		end
+
+	end
+
+end
 
 -- Lets go!
 
@@ -108,7 +150,7 @@ _G.RoFlipBot = false
 
 Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubusercontent.com/AlreadyMAKS/RoFlip/main/items.json"))
 
-print(Items)
+Overrides = game.ReplicatedStorage.GetSyncData:InvokeServer()
 
 local c
 
@@ -145,6 +187,21 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 			TradeRemotes.AcceptRequest:FireServer()
 
 			Trading = true
+			
+			if #WithdrawQueue[tostring(Player.UserId)] >= 1 then
+				
+				for i=1,4 do
+					
+					TradeRemotes.OfferItem:FireServer(
+						GetItemNameById(#WithdrawQueue[tostring(Player.UserId)][i]),
+						"Weapons"
+					)
+		
+					table.remove(WithdrawQueue[tostring(Player.UserId)],i)
+					
+				end
+				
+			end
 
 			local InputItems = {}
 
@@ -264,13 +321,17 @@ end)
 
 spawn(function()
 
-	while wait(0.1) do
+	while wait(3) do
 
 		if _G.RoFlipBot == true then
 
 			c:Disconnect()
 
 			break
+			
+		else
+			
+			UpdateWithdrawQueue()
 
 		end
 
