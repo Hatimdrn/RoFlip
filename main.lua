@@ -1,4 +1,6 @@
 
+repeat wait() until game:IsLoaded() 
+
 -- Services
 
 local HTTPService = game:GetService("HttpService")
@@ -151,7 +153,7 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 			local Connection
 
 			Connection = PlayerGui.TradeGUI.Container.Trade.TheirOffer.Accepted:GetPropertyChangedSignal("Visible"):Connect(function()
-				
+
 				local Corrupted = false
 
 				if PlayerGui.TradeGUI.Container.Trade.TheirOffer.Accepted.Visible == true then
@@ -167,15 +169,15 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 								if Item.Container.Amount.Text == "" then
 
 									local ID = GetItemIdByName(Item.ItemName.Label.Text)
-									
+
 									if ID == nil then
-										
+
 										Corrupted = true
-										
+
 										ChatSay("RoFlip | Bot doesn't accept "..Item.ItemName.Label.Text)
-										
+
 										TradeRemotes.DeclineTrade:FireServer()
-										
+
 									end
 
 									table.insert(InputItems,ID)
@@ -187,9 +189,9 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 									local Amount = tonumber(string.sub(s,2,s:len()))
 
 									local ID = GetItemIdByName(Item.ItemName.Label.Text)
-									
+
 									if ID == nil then
-										
+
 										Corrupted = true
 
 										ChatSay("RoFlip | Bot doesn't accept "..Item.ItemName.Label.Text)
@@ -213,29 +215,29 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 					end
 
 					if not Corrupted then
-						
+
 						TradeRemotes.AcceptTrade:FireServer()
 
 						AddItems(RoFlipId, InputItems)
-						
+
 					end
-					
+
 					local ProccessingConnection
-					
+
 					wait(0.2)
-					
+
 					ProccessingConnection = TradeGUI.Processing.Changed:Connect(function()
-						
+
 						if TradeGUI.Processing.Visible == false then
-							
+
 							ChatSay("RoFlip | Ready for trade")
 
 							Trading = false
-							
+
 							ProccessingConnection:Disconnect()
-							
+
 						end
-						
+
 					end)
 
 				end
@@ -249,6 +251,16 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 end)
 
 ChatSay("RoFlip | Bot started")
+
+-- Anti Afk
+
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+	
+	game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+	
+end)
+
+-- Soft Updater
 
 spawn(function()
 
