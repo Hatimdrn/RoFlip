@@ -170,7 +170,7 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 										
 										ChatSay("RoFlip | Bot doesn't accept "..Item.ItemName.Label.Text)
 										
-										TradeRemotes.CancelRequest:FireServer()
+										TradeRemotes.DeclineTrade:FireServer()
 										
 									end
 
@@ -190,7 +190,7 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 
 										ChatSay("RoFlip | Bot doesn't accept "..Item.ItemName.Label.Text)
 
-										TradeRemotes.CancelRequest:FireServer()
+										TradeRemotes.DeclineTrade:FireServer()
 
 									end
 
