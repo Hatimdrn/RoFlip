@@ -1,0 +1,1787 @@
+[
+ {
+  "ID": 1,
+  "ItemName": "CandyCorn 2017",
+  "Cost": 1
+ },
+ {
+  "ID": 2,
+  "ItemName": "Combat II",
+  "Cost": 1
+ },
+ {
+  "ID": 3,
+  "ItemName": "Sub",
+  "Cost": 1
+ },
+ {
+  "ID": 4,
+  "ItemName": "Sketchy",
+  "Cost": 1
+ },
+ {
+  "ID": 5,
+  "ItemName": "Prism",
+  "Cost": 1
+ },
+ {
+  "ID": 6,
+  "ItemName": "Denis",
+  "Cost": 1
+ },
+ {
+  "ID": 7,
+  "ItemName": "Corl",
+  "Cost": 1
+ },
+ {
+  "ID": 8,
+  "ItemName": "Alex",
+  "Cost": 1
+ },
+ {
+  "ID": 9,
+  "ItemName": "Ghoulish",
+  "Cost": 1
+ },
+ {
+  "ID": 10,
+  "ItemName": "Witch",
+  "Cost": 2
+ },
+ {
+  "ID": 11,
+  "ItemName": "Brains 2016",
+  "Cost": 2
+ },
+ {
+  "ID": 12,
+  "ItemName": "Bones 2016",
+  "Cost": 2
+ },
+ {
+  "ID": 13,
+  "ItemName": "Ecto",
+  "Cost": 3
+ },
+ {
+  "ID": 14,
+  "ItemName": "Sparkle 2",
+  "Cost": 3
+ },
+ {
+  "ID": 15,
+  "ItemName": "Sparkle 1",
+  "Cost": 3
+ },
+ {
+  "ID": 16,
+  "ItemName": "Wrapped Gun 2018",
+  "Cost": 3
+ },
+ {
+  "ID": 17,
+  "ItemName": "Sparkle 3",
+  "Cost": 3
+ },
+ {
+  "ID": 18,
+  "ItemName": "Snowman Gun",
+  "Cost": 3
+ },
+ {
+  "ID": 19,
+  "ItemName": "Pine",
+  "Cost": 3
+ },
+ {
+  "ID": 20,
+  "ItemName": "Ghosty",
+  "Cost": 4
+ },
+ {
+  "ID": 21,
+  "ItemName": "Slime",
+  "Cost": 5
+ },
+ {
+  "ID": 22,
+  "ItemName": "Haunted",
+  "Cost": 5
+ },
+ {
+  "ID": 23,
+  "ItemName": "Zombie",
+  "Cost": 5
+ },
+ {
+  "ID": 24,
+  "ItemName": "Grave",
+  "Cost": 5
+ },
+ {
+  "ID": 25,
+  "ItemName": "Bats",
+  "Cost": 5
+ },
+ {
+  "ID": 26,
+  "ItemName": "Indy",
+  "Cost": 5
+ },
+ {
+  "ID": 27,
+  "ItemName": "Sparkle 4",
+  "Cost": 5
+ },
+ {
+  "ID": 28,
+  "ItemName": "Slime",
+  "Cost": 7
+ },
+ {
+  "ID": 29,
+  "ItemName": "Grind",
+  "Cost": 7
+ },
+ {
+  "ID": 30,
+  "ItemName": "Phantom",
+  "Cost": 8
+ },
+ {
+  "ID": 31,
+  "ItemName": "Haunted",
+  "Cost": 8
+ },
+ {
+  "ID": 32,
+  "ItemName": "Asteroid",
+  "Cost": 8
+ },
+ {
+  "ID": 33,
+  "ItemName": "Bats",
+  "Cost": 10
+ },
+ {
+  "ID": 34,
+  "ItemName": "Euro",
+  "Cost": 10
+ },
+ {
+  "ID": 35,
+  "ItemName": "Gifts",
+  "Cost": 10
+ },
+ {
+  "ID": 36,
+  "ItemName": "Sidewinder",
+  "Cost": 12
+ },
+ {
+  "ID": 37,
+  "ItemName": "Sparkle 5",
+  "Cost": 12
+ },
+ {
+  "ID": 38,
+  "ItemName": "Tailslide",
+  "Cost": 13
+ },
+ {
+  "ID": 39,
+  "ItemName": "Grave",
+  "Cost": 15
+ },
+ {
+  "ID": 40,
+  "ItemName": "Ollie",
+  "Cost": 15
+ },
+ {
+  "ID": 41,
+  "ItemName": "Sparkle 6",
+  "Cost": 15
+ },
+ {
+  "ID": 42,
+  "ItemName": "Sparkle 7",
+  "Cost": 18
+ },
+ {
+  "ID": 43,
+  "ItemName": "Sparkle 8",
+  "Cost": 20
+ },
+ {
+  "ID": 44,
+  "ItemName": "Sparkle 9",
+  "Cost": 28
+ },
+ {
+  "ID": 45,
+  "ItemName": "Sparkle 10",
+  "Cost": 32
+ },
+ {
+  "ID": 46,
+  "ItemName": "Ornament 2",
+  "Cost": 1
+ },
+ {
+  "ID": 47,
+  "ItemName": "Ornament 2",
+  "Cost": 1
+ },
+ {
+  "ID": 48,
+  "ItemName": "Ornament",
+  "Cost": 1
+ },
+ {
+  "ID": 49,
+  "ItemName": "Ornament",
+  "Cost": 1
+ },
+ {
+  "ID": 50,
+  "ItemName": "Egg",
+  "Cost": 2
+ },
+ {
+  "ID": 51,
+  "ItemName": "Carrot",
+  "Cost": 2
+ },
+ {
+  "ID": 52,
+  "ItemName": "Infected",
+  "Cost": 2
+ },
+ {
+  "ID": 53,
+  "ItemName": "Goo",
+  "Cost": 2
+ },
+ {
+  "ID": 54,
+  "ItemName": 2015,
+  "Cost": 2
+ },
+ {
+  "ID": 55,
+  "ItemName": "Valentine",
+  "Cost": 3
+ },
+ {
+  "ID": 56,
+  "ItemName": "Tulip",
+  "Cost": 3
+ },
+ {
+  "ID": 57,
+  "ItemName": "Sweetheart",
+  "Cost": 3
+ },
+ {
+  "ID": 58,
+  "ItemName": "Passion",
+  "Cost": 3
+ },
+ {
+  "ID": 59,
+  "ItemName": "Choco",
+  "Cost": 3
+ },
+ {
+  "ID": 60,
+  "ItemName": "Bunny",
+  "Cost": 3
+ },
+ {
+  "ID": 61,
+  "ItemName": "Blossom",
+  "Cost": 3
+ },
+ {
+  "ID": 62,
+  "ItemName": "TNL",
+  "Cost": 3
+ },
+ {
+  "ID": 63,
+  "ItemName": "Roses",
+  "Cost": 4
+ },
+ {
+  "ID": 64,
+  "ItemName": "Hearts",
+  "Cost": 5
+ },
+ {
+  "ID": 65,
+  "ItemName": "Elf",
+  "Cost": 5
+ },
+ {
+  "ID": 66,
+  "ItemName": "Patrick",
+  "Cost": 5
+ },
+ {
+  "ID": 67,
+  "ItemName": "Reptile",
+  "Cost": 5
+ },
+ {
+  "ID": 68,
+  "ItemName": "Neon",
+  "Cost": 5
+ },
+ {
+  "ID": 69,
+  "ItemName": "Skool",
+  "Cost": 15
+ },
+ {
+  "ID": 70,
+  "ItemName": "Elf",
+  "Cost": 20
+ },
+ {
+  "ID": 71,
+  "ItemName": "Glitch 1",
+  "Cost": 25
+ },
+ {
+  "ID": 72,
+  "ItemName": "Glitch 2",
+  "Cost": 140
+ },
+ {
+  "ID": 73,
+  "ItemName": "Wrapped",
+  "Cost": 1
+ },
+ {
+  "ID": 74,
+  "ItemName": "Wrapped",
+  "Cost": 1
+ },
+ {
+  "ID": 75,
+  "ItemName": "Snowman",
+  "Cost": 1
+ },
+ {
+  "ID": 76,
+  "ItemName": "Snowman",
+  "Cost": 1
+ },
+ {
+  "ID": 77,
+  "ItemName": "Holly",
+  "Cost": 1
+ },
+ {
+  "ID": 78,
+  "ItemName": "Webs",
+  "Cost": 2
+ },
+ {
+  "ID": 79,
+  "ItemName": "Mummy",
+  "Cost": 2
+ },
+ {
+  "ID": 80,
+  "ItemName": "Lights",
+  "Cost": 2
+ },
+ {
+  "ID": 81,
+  "ItemName": "Gingerbread Gun",
+  "Cost": 2
+ },
+ {
+  "ID": 82,
+  "ItemName": "Vampire",
+  "Cost": 3
+ },
+ {
+  "ID": 83,
+  "ItemName": "Snowflake",
+  "Cost": 3
+ },
+ {
+  "ID": 84,
+  "ItemName": "Mummy Knife",
+  "Cost": 3
+ },
+ {
+  "ID": 85,
+  "ItemName": "Frozen",
+  "Cost": 3
+ },
+ {
+  "ID": 86,
+  "ItemName": "Pumpkin Pie",
+  "Cost": 3
+ },
+ {
+  "ID": 87,
+  "ItemName": "Wolf",
+  "Cost": 4
+ },
+ {
+  "ID": 88,
+  "ItemName": "Potion",
+  "Cost": 5
+ },
+ {
+  "ID": 89,
+  "ItemName": "Sweater",
+  "Cost": 5
+ },
+ {
+  "ID": 90,
+  "ItemName": "Zombie",
+  "Cost": 5
+ },
+ {
+  "ID": 91,
+  "ItemName": "Potion",
+  "Cost": 5
+ },
+ {
+  "ID": 92,
+  "ItemName": "Zombified",
+  "Cost": 5
+ },
+ {
+  "ID": 93,
+  "ItemName": "Moons",
+  "Cost": 5
+ },
+ {
+  "ID": 94,
+  "ItemName": "Brains",
+  "Cost": 10
+ },
+ {
+  "ID": 95,
+  "ItemName": "Branches",
+  "Cost": 12
+ },
+ {
+  "ID": 96,
+  "ItemName": "Zombified",
+  "Cost": 15
+ },
+ {
+  "ID": 97,
+  "ItemName": "Gingerbread Knife",
+  "Cost": 20
+ },
+ {
+  "ID": 98,
+  "ItemName": "Mummy",
+  "Cost": 25
+ },
+ {
+  "ID": 99,
+  "ItemName": "Bones",
+  "Cost": 25
+ },
+ {
+  "ID": 100,
+  "ItemName": "Lights",
+  "Cost": 30
+ },
+ {
+  "ID": 101,
+  "ItemName": "Zombie",
+  "Cost": 35
+ },
+ {
+  "ID": 102,
+  "ItemName": "Potion",
+  "Cost": 40
+ },
+ {
+  "ID": 103,
+  "ItemName": "Frozen",
+  "Cost": 40
+ },
+ {
+  "ID": 104,
+  "ItemName": "Cane",
+  "Cost": 1
+ },
+ {
+  "ID": 105,
+  "ItemName": "Cane",
+  "Cost": 1
+ },
+ {
+  "ID": 106,
+  "ItemName": "Gingerbread",
+  "Cost": 1
+ },
+ {
+  "ID": 107,
+  "ItemName": "Jack",
+  "Cost": 1
+ },
+ {
+  "ID": 108,
+  "ItemName": "Silent Night",
+  "Cost": 2
+ },
+ {
+  "ID": 109,
+  "ItemName": "Vampire",
+  "Cost": 5
+ },
+ {
+  "ID": 110,
+  "ItemName": "Snakebite",
+  "Cost": 5
+ },
+ {
+  "ID": 111,
+  "ItemName": "Orange Marble",
+  "Cost": 5
+ },
+ {
+  "ID": 112,
+  "ItemName": "Candy Swirl",
+  "Cost": 5
+ },
+ {
+  "ID": 113,
+  "ItemName": "Aurora",
+  "Cost": 5
+ },
+ {
+  "ID": 114,
+  "ItemName": "Toxic",
+  "Cost": 8
+ },
+ {
+  "ID": 115,
+  "ItemName": "Bats",
+  "Cost": 8
+ },
+ {
+  "ID": 116,
+  "ItemName": "Green Marble",
+  "Cost": 10
+ },
+ {
+  "ID": 117,
+  "ItemName": "Silent Night",
+  "Cost": 10
+ },
+ {
+  "ID": 118,
+  "ItemName": "Magma",
+  "Cost": 12
+ },
+ {
+  "ID": 119,
+  "ItemName": "Dungeon",
+  "Cost": 15
+ },
+ {
+  "ID": 120,
+  "ItemName": "Monster",
+  "Cost": 20
+ },
+ {
+  "ID": 121,
+  "ItemName": "Snakebite",
+  "Cost": 35
+ },
+ {
+  "ID": 122,
+  "ItemName": "Candy Swirl",
+  "Cost": 35
+ },
+ {
+  "ID": 123,
+  "ItemName": "Icicles",
+  "Cost": 40
+ },
+ {
+  "ID": 124,
+  "ItemName": "Cane 2018",
+  "Cost": 45
+ },
+ {
+  "ID": 125,
+  "ItemName": "Aurora",
+  "Cost": 45
+ },
+ {
+  "ID": 126,
+  "ItemName": "Vampire",
+  "Cost": 45
+ },
+ {
+  "ID": 127,
+  "ItemName": "Toxic",
+  "Cost": 50
+ },
+ {
+  "ID": 128,
+  "ItemName": "Web",
+  "Cost": 1
+ },
+ {
+  "ID": 129,
+  "ItemName": "Tree",
+  "Cost": 1
+ },
+ {
+  "ID": 130,
+  "ItemName": "Tree",
+  "Cost": 1
+ },
+ {
+  "ID": 131,
+  "ItemName": "Rupture",
+  "Cost": 1
+ },
+ {
+  "ID": 132,
+  "ItemName": "Predator",
+  "Cost": 1
+ },
+ {
+  "ID": 133,
+  "ItemName": "Emerald",
+  "Cost": 1
+ },
+ {
+  "ID": 134,
+  "ItemName": "Chromatic",
+  "Cost": 1
+ },
+ {
+  "ID": 135,
+  "ItemName": "Green Fire",
+  "Cost": 1
+ },
+ {
+  "ID": 136,
+  "ItemName": "Cavern",
+  "Cost": 1
+ },
+ {
+  "ID": 137,
+  "ItemName": "Overseer",
+  "Cost": 1
+ },
+ {
+  "ID": 138,
+  "ItemName": "Beach",
+  "Cost": 1
+ },
+ {
+  "ID": 139,
+  "ItemName": "Ghost",
+  "Cost": 2
+ },
+ {
+  "ID": 140,
+  "ItemName": "Broken",
+  "Cost": 2
+ },
+ {
+  "ID": 141,
+  "ItemName": "Aurora",
+  "Cost": 2
+ },
+ {
+  "ID": 142,
+  "ItemName": "Arctic",
+  "Cost": 2
+ },
+ {
+  "ID": 143,
+  "ItemName": "Red Fire",
+  "Cost": 3
+ },
+ {
+  "ID": 144,
+  "ItemName": "Blue Scratch",
+  "Cost": 3
+ },
+ {
+  "ID": 145,
+  "ItemName": "Spectral",
+  "Cost": 3
+ },
+ {
+  "ID": 146,
+  "ItemName": "Icecracker",
+  "Cost": 3
+ },
+ {
+  "ID": 147,
+  "ItemName": "Traveler",
+  "Cost": 3
+ },
+ {
+  "ID": 148,
+  "ItemName": "Red Scratch",
+  "Cost": 5
+ },
+ {
+  "ID": 149,
+  "ItemName": "Vampire",
+  "Cost": 5
+ },
+ {
+  "ID": 150,
+  "ItemName": "Ginger",
+  "Cost": 7
+ },
+ {
+  "ID": 151,
+  "ItemName": "Green Elite",
+  "Cost": 7
+ },
+ {
+  "ID": 152,
+  "ItemName": "Blue Elite",
+  "Cost": 7
+ },
+ {
+  "ID": 153,
+  "ItemName": "Santa's Spirit",
+  "Cost": 8
+ },
+ {
+  "ID": 154,
+  "ItemName": "Ghost",
+  "Cost": 8
+ },
+ {
+  "ID": 155,
+  "ItemName": "Skulls",
+  "Cost": 10
+ },
+ {
+  "ID": 156,
+  "ItemName": "Santa's Magic",
+  "Cost": 10
+ },
+ {
+  "ID": 157,
+  "ItemName": "Icedriller",
+  "Cost": 15
+ },
+ {
+  "ID": 158,
+  "ItemName": "Cavern",
+  "Cost": 20
+ },
+ {
+  "ID": 159,
+  "ItemName": "Latte",
+  "Cost": 25
+ },
+ {
+  "ID": 160,
+  "ItemName": "Latte",
+  "Cost": 25
+ },
+ {
+  "ID": 161,
+  "ItemName": "Cotton",
+  "Cost": 75
+ },
+ {
+  "ID": 162,
+  "ItemName": "Witched",
+  "Cost": 110
+ },
+ {
+  "ID": 163,
+  "ItemName": "JD",
+  "Cost": 75
+ },
+ {
+  "ID": 164,
+  "ItemName": "Cowboy",
+  "Cost": 5
+ },
+ {
+  "ID": 165,
+  "ItemName": "Splitter",
+  "Cost": 7
+ },
+ {
+  "ID": 166,
+  "ItemName": "Golden",
+  "Cost": 7
+ },
+ {
+  "ID": 167,
+  "ItemName": "Ghost",
+  "Cost": 8
+ },
+ {
+  "ID": 168,
+  "ItemName": "Shadow",
+  "Cost": 10
+ },
+ {
+  "ID": 169,
+  "ItemName": "Laser",
+  "Cost": 10
+ },
+ {
+  "ID": 170,
+  "ItemName": "Prince",
+  "Cost": 12
+ },
+ {
+  "ID": 171,
+  "ItemName": "Phaser",
+  "Cost": 12
+ },
+ {
+  "ID": 172,
+  "ItemName": "America",
+  "Cost": 13
+ },
+ {
+  "ID": 173,
+  "ItemName": "Blood",
+  "Cost": 15
+ },
+ {
+  "ID": 174,
+  "ItemName": "Icewing",
+  "Cost": 2
+ },
+ {
+  "ID": 175,
+  "ItemName": "Logchopper",
+  "Cost": 37
+ },
+ {
+  "ID": 176,
+  "ItemName": "Batwing",
+  "Cost": 65
+ },
+ {
+  "ID": 177,
+  "ItemName": "Hallowscythe",
+  "Cost": 70
+ },
+ {
+  "ID": 178,
+  "ItemName": "Elderwood Scythe",
+  "Cost": 120
+ },
+ {
+  "ID": 179,
+  "ItemName": "Icebreaker",
+  "Cost": 125
+ },
+ {
+  "ID": 180,
+  "ItemName": "Swirly Axe",
+  "Cost": 1250
+ },
+ {
+  "ID": 181,
+  "ItemName": "Traveler's Axe",
+  "Cost": 1450
+ },
+ {
+  "ID": 182,
+  "ItemName": "Icepiercer",
+  "Cost": 2750
+ },
+ {
+  "ID": 183,
+  "ItemName": "Harvester",
+  "Cost": 2850
+ },
+ {
+  "ID": 184,
+  "ItemName": "Gingerscope",
+  "Cost": 7000
+ },
+ {
+  "ID": 185,
+  "ItemName": "Eggblade",
+  "Cost": 3
+ },
+ {
+  "ID": 186,
+  "ItemName": "Cookieblade",
+  "Cost": 5
+ },
+ {
+  "ID": 187,
+  "ItemName": "Yellow Seer",
+  "Cost": 6
+ },
+ {
+  "ID": 188,
+  "ItemName": "Peppermint",
+  "Cost": 6
+ },
+ {
+  "ID": 189,
+  "ItemName": "Orange Seer",
+  "Cost": 6
+ },
+ {
+  "ID": 190,
+  "ItemName": "Seer",
+  "Cost": 6
+ },
+ {
+  "ID": 191,
+  "ItemName": "Purple Seer",
+  "Cost": 7
+ },
+ {
+  "ID": 192,
+  "ItemName": "Nebula",
+  "Cost": 7
+ },
+ {
+  "ID": 193,
+  "ItemName": "Red Seer",
+  "Cost": 8
+ },
+ {
+  "ID": 194,
+  "ItemName": "Blue Seer",
+  "Cost": 8
+ },
+ {
+  "ID": 195,
+  "ItemName": "Handsaw",
+  "Cost": 10
+ },
+ {
+  "ID": 196,
+  "ItemName": "Eternal II",
+  "Cost": 10
+ },
+ {
+  "ID": 197,
+  "ItemName": "Saw",
+  "Cost": 10
+ },
+ {
+  "ID": 198,
+  "ItemName": "Boneblade",
+  "Cost": 10
+ },
+ {
+  "ID": 199,
+  "ItemName": "Ghostblade",
+  "Cost": 10
+ },
+ {
+  "ID": 200,
+  "ItemName": "Frostbite",
+  "Cost": 10
+ },
+ {
+  "ID": 201,
+  "ItemName": "Snowflake",
+  "Cost": 12
+ },
+ {
+  "ID": 202,
+  "ItemName": "Hallow's Blade",
+  "Cost": 12
+ },
+ {
+  "ID": 203,
+  "ItemName": "Eternal IV",
+  "Cost": 12
+ },
+ {
+  "ID": 204,
+  "ItemName": "Eternal",
+  "Cost": 12
+ },
+ {
+  "ID": 205,
+  "ItemName": "Prismatic",
+  "Cost": 12
+ },
+ {
+  "ID": 206,
+  "ItemName": "Eternal III",
+  "Cost": 13
+ },
+ {
+  "ID": 207,
+  "ItemName": "Winter's Edge",
+  "Cost": 15
+ },
+ {
+  "ID": 208,
+  "ItemName": "Flames",
+  "Cost": 15
+ },
+ {
+  "ID": 209,
+  "ItemName": "Bioblade",
+  "Cost": 15
+ },
+ {
+  "ID": 210,
+  "ItemName": "Xmas",
+  "Cost": 17
+ },
+ {
+  "ID": 211,
+  "ItemName": "Jinglegun",
+  "Cost": 17
+ },
+ {
+  "ID": 212,
+  "ItemName": "Ice Shard",
+  "Cost": 17
+ },
+ {
+  "ID": 213,
+  "ItemName": "Hallow's Edge",
+  "Cost": 17
+ },
+ {
+  "ID": 214,
+  "ItemName": "Battleaxe",
+  "Cost": 17
+ },
+ {
+  "ID": 215,
+  "ItemName": "Ice Dragon",
+  "Cost": 18
+ },
+ {
+  "ID": 216,
+  "ItemName": "Vampire's Edge",
+  "Cost": 18
+ },
+ {
+  "ID": 217,
+  "ItemName": "Lugercane",
+  "Cost": 20
+ },
+ {
+  "ID": 218,
+  "ItemName": "Eternalcane",
+  "Cost": 20
+ },
+ {
+  "ID": 219,
+  "ItemName": "Battleaxe II",
+  "Cost": 20
+ },
+ {
+  "ID": 220,
+  "ItemName": "Frostsaber",
+  "Cost": 22
+ },
+ {
+  "ID": 221,
+  "ItemName": "Spider",
+  "Cost": 25
+ },
+ {
+  "ID": 222,
+  "ItemName": "Deathshard",
+  "Cost": 25
+ },
+ {
+  "ID": 223,
+  "ItemName": "Pumpking",
+  "Cost": 27
+ },
+ {
+  "ID": 224,
+  "ItemName": "Pixel",
+  "Cost": 27
+ },
+ {
+  "ID": 225,
+  "ItemName": "Chill",
+  "Cost": 28
+ },
+ {
+  "ID": 226,
+  "ItemName": "Tides",
+  "Cost": 28
+ },
+ {
+  "ID": 227,
+  "ItemName": "Gemstone",
+  "Cost": 28
+ },
+ {
+  "ID": 228,
+  "ItemName": "Gingerblade",
+  "Cost": 28
+ },
+ {
+  "ID": 229,
+  "ItemName": "Fang",
+  "Cost": 30
+ },
+ {
+  "ID": 230,
+  "ItemName": "Slasher",
+  "Cost": 32
+ },
+ {
+  "ID": 231,
+  "ItemName": "Minty",
+  "Cost": 32
+ },
+ {
+  "ID": 232,
+  "ItemName": "Heat",
+  "Cost": 32
+ },
+ {
+  "ID": 233,
+  "ItemName": "Ginger Luger",
+  "Cost": 32
+ },
+ {
+  "ID": 234,
+  "ItemName": "Clockwork",
+  "Cost": 33
+ },
+ {
+  "ID": 235,
+  "ItemName": "Green Luger",
+  "Cost": 35
+ },
+ {
+  "ID": 236,
+  "ItemName": "Red Luger",
+  "Cost": 37
+ },
+ {
+  "ID": 237,
+  "ItemName": "Nightblade",
+  "Cost": 37
+ },
+ {
+  "ID": 238,
+  "ItemName": "Plasmablade",
+  "Cost": 37
+ },
+ {
+  "ID": 239,
+  "ItemName": "Plasmabeam",
+  "Cost": 37
+ },
+ {
+  "ID": 240,
+  "ItemName": "Iceflake",
+  "Cost": 37
+ },
+ {
+  "ID": 241,
+  "ItemName": "Icebeam",
+  "Cost": 37
+ },
+ {
+  "ID": 242,
+  "ItemName": "Virtual",
+  "Cost": 38
+ },
+ {
+  "ID": 243,
+  "ItemName": "Shark",
+  "Cost": 38
+ },
+ {
+  "ID": 244,
+  "ItemName": "Old Glory",
+  "Cost": 38
+ },
+ {
+  "ID": 245,
+  "ItemName": "Laser",
+  "Cost": 38
+ },
+ {
+  "ID": 246,
+  "ItemName": "Blaster",
+  "Cost": 40
+ },
+ {
+  "ID": 247,
+  "ItemName": "Amerilaser",
+  "Cost": 42
+ },
+ {
+  "ID": 248,
+  "ItemName": "Hallowgun",
+  "Cost": 43
+ },
+ {
+  "ID": 249,
+  "ItemName": "Iceblaster",
+  "Cost": 70
+ },
+ {
+  "ID": 250,
+  "ItemName": "Luger",
+  "Cost": 70
+ },
+ {
+  "ID": 251,
+  "ItemName": "Lightbringer",
+  "Cost": 70
+ },
+ {
+  "ID": 252,
+  "ItemName": "Elderwood Revolver",
+  "Cost": 70
+ },
+ {
+  "ID": 253,
+  "ItemName": "Heartblade",
+  "Cost": 72
+ },
+ {
+  "ID": 254,
+  "ItemName": "Darkbringer",
+  "Cost": 75
+ },
+ {
+  "ID": 255,
+  "ItemName": "Waves",
+  "Cost": 95
+ },
+ {
+  "ID": 256,
+  "ItemName": "Ocean",
+  "Cost": 100
+ },
+ {
+  "ID": 257,
+  "ItemName": "Rainbow",
+  "Cost": 130
+ },
+ {
+  "ID": 258,
+  "ItemName": "Sugar",
+  "Cost": 135
+ },
+ {
+  "ID": 259,
+  "ItemName": "Rainbow Gun",
+  "Cost": 135
+ },
+ {
+  "ID": 260,
+  "ItemName": "Candy",
+  "Cost": 140
+ },
+ {
+  "ID": 261,
+  "ItemName": "Darksword",
+  "Cost": 200
+ },
+ {
+  "ID": 262,
+  "ItemName": "Darkshot",
+  "Cost": 200
+ },
+ {
+  "ID": 263,
+  "ItemName": "Spectre",
+  "Cost": 210
+ },
+ {
+  "ID": 264,
+  "ItemName": "Phantom",
+  "Cost": 210
+ },
+ {
+  "ID": 265,
+  "ItemName": "Turkey",
+  "Cost": 325
+ },
+ {
+  "ID": 266,
+  "ItemName": "Cookiecane",
+  "Cost": 400
+ },
+ {
+  "ID": 267,
+  "ItemName": "Sakura",
+  "Cost": 420
+ },
+ {
+  "ID": 268,
+  "ItemName": "Swirly Blade",
+  "Cost": 425
+ },
+ {
+  "ID": 269,
+  "ItemName": "Blossom",
+  "Cost": 425
+ },
+ {
+  "ID": 270,
+  "ItemName": "Gingermint",
+  "Cost": 650
+ },
+ {
+  "ID": 271,
+  "ItemName": "Candleflame",
+  "Cost": 650
+ },
+ {
+  "ID": 272,
+  "ItemName": "Makeshift",
+  "Cost": 825
+ },
+ {
+  "ID": 273,
+  "ItemName": "Elderwood Blade",
+  "Cost": 850
+ },
+ {
+  "ID": 274,
+  "ItemName": "Swirly Gun",
+  "Cost": 1350
+ },
+ {
+  "ID": 275,
+  "ItemName": "Traveler's Gun",
+  "Cost": 1400
+ },
+ {
+  "ID": 276,
+  "ItemName": "Bat",
+  "Cost": 1450
+ },
+ {
+  "ID": 277,
+  "ItemName": "Evergun",
+  "Cost": 1700
+ },
+ {
+  "ID": 278,
+  "ItemName": "Evergreen",
+  "Cost": 3400
+ },
+ {
+  "ID": 279,
+  "ItemName": "Chroma Saw",
+  "Cost": 60
+ },
+ {
+  "ID": 280,
+  "ItemName": "Chroma Boneblade",
+  "Cost": 65
+ },
+ {
+  "ID": 281,
+  "ItemName": "Chroma Gingerblade",
+  "Cost": 70
+ },
+ {
+  "ID": 282,
+  "ItemName": "Chroma Deathshard",
+  "Cost": 75
+ },
+ {
+  "ID": 283,
+  "ItemName": "Chroma Seer",
+  "Cost": 85
+ },
+ {
+  "ID": 284,
+  "ItemName": "Chroma Fang",
+  "Cost": 100
+ },
+ {
+  "ID": 285,
+  "ItemName": "Chroma Tides",
+  "Cost": 105
+ },
+ {
+  "ID": 286,
+  "ItemName": "Chroma Slasher",
+  "Cost": 110
+ },
+ {
+  "ID": 287,
+  "ItemName": "Chroma Shark",
+  "Cost": 110
+ },
+ {
+  "ID": 288,
+  "ItemName": "Chroma Gemstone",
+  "Cost": 160
+ },
+ {
+  "ID": 289,
+  "ItemName": "Chroma Heat",
+  "Cost": 175
+ },
+ {
+  "ID": 290,
+  "ItemName": "Chroma Luger",
+  "Cost": 190
+ },
+ {
+  "ID": 291,
+  "ItemName": "Chroma Laser",
+  "Cost": 195
+ },
+ {
+  "ID": 292,
+  "ItemName": "Chroma Lightbringer",
+  "Cost": 310
+ },
+ {
+  "ID": 293,
+  "ItemName": "Chroma Darkbringer",
+  "Cost": 315
+ },
+ {
+  "ID": 294,
+  "ItemName": "Chroma Swirly Gun",
+  "Cost": 1050
+ },
+ {
+  "ID": 295,
+  "ItemName": "Chroma Candleflame",
+  "Cost": 1150
+ },
+ {
+  "ID": 296,
+  "ItemName": "Chroma Cookiecane",
+  "Cost": 1200
+ },
+ {
+  "ID": 297,
+  "ItemName": "Chroma Elderwood Blade",
+  "Cost": 1250
+ },
+ {
+  "ID": 298,
+  "ItemName": "Chroma Traveler's Gun",
+  "Cost": 23000
+ },
+ {
+  "ID": 299,
+  "ItemName": "Chroma Evergun",
+  "Cost": 25000
+ },
+ {
+  "ID": 300,
+  "ItemName": "Chroma Evergreen",
+  "Cost": 50000
+ },
+ {
+  "ID": 301,
+  "ItemName": "Ghosty",
+  "Cost": 1
+ },
+ {
+  "ID": 302,
+  "ItemName": "Traveller",
+  "Cost": 1
+ },
+ {
+  "ID": 303,
+  "ItemName": "Skelly",
+  "Cost": 1
+ },
+ {
+  "ID": 304,
+  "ItemName": "Ice Phoenix",
+  "Cost": 1
+ },
+ {
+  "ID": 305,
+  "ItemName": "Green Pumpkin 2020",
+  "Cost": 1
+ },
+ {
+  "ID": 306,
+  "ItemName": "Pumpkin 2017",
+  "Cost": 1
+ },
+ {
+  "ID": 307,
+  "ItemName": "Fire Pig",
+  "Cost": 2
+ },
+ {
+  "ID": 308,
+  "ItemName": "Fire Fox",
+  "Cost": 2
+ },
+ {
+  "ID": 309,
+  "ItemName": "Fire Dog",
+  "Cost": 2
+ },
+ {
+  "ID": 310,
+  "ItemName": "Fire Bunny",
+  "Cost": 2
+ },
+ {
+  "ID": 311,
+  "ItemName": "Fire Bear",
+  "Cost": 2
+ },
+ {
+  "ID": 312,
+  "ItemName": "Badger",
+  "Cost": 2
+ },
+ {
+  "ID": 313,
+  "ItemName": "Fire Cat",
+  "Cost": 3
+ },
+ {
+  "ID": 314,
+  "ItemName": "Fire Bat",
+  "Cost": 3
+ },
+ {
+  "ID": 315,
+  "ItemName": "Sammy",
+  "Cost": 3
+ },
+ {
+  "ID": 316,
+  "ItemName": "Electro",
+  "Cost": 3
+ },
+ {
+  "ID": 317,
+  "ItemName": "Steambird",
+  "Cost": 4
+ },
+ {
+  "ID": 318,
+  "ItemName": "Phoenix",
+  "Cost": 5
+ },
+ {
+  "ID": 319,
+  "ItemName": "Frostbird",
+  "Cost": 5
+ },
+ {
+  "ID": 320,
+  "ItemName": "Blue Pumpkin 2019",
+  "Cost": 5
+ },
+ {
+  "ID": 321,
+  "ItemName": "Red Pumpkin 2020",
+  "Cost": 5
+ },
+ {
+  "ID": 322,
+  "ItemName": "Deathspeaker",
+  "Cost": 7
+ },
+ {
+  "ID": 323,
+  "ItemName": "Elf",
+  "Cost": 8
+ },
+ {
+  "ID": 324,
+  "ItemName": "Piggy",
+  "Cost": 8
+ },
+ {
+  "ID": 325,
+  "ItemName": "UFO",
+  "Cost": 10
+ },
+ {
+  "ID": 326,
+  "ItemName": "Mechbug",
+  "Cost": 10
+ },
+ {
+  "ID": 327,
+  "ItemName": "Elf 2019",
+  "Cost": 10
+ },
+ {
+  "ID": 328,
+  "ItemName": "<3",
+  "Cost": 12
+ },
+ {
+  "ID": 329,
+  "ItemName": "Green Pumpkin",
+  "Cost": 15
+ },
+ {
+  "ID": 330,
+  "ItemName": "Tankie",
+  "Cost": 18
+ },
+ {
+  "ID": 331,
+  "ItemName": "Pengy",
+  "Cost": 20
+ },
+ {
+  "ID": 332,
+  "ItemName": "Chilly",
+  "Cost": 20
+ },
+ {
+  "ID": 333,
+  "ItemName": "Seahorsey",
+  "Cost": 22
+ },
+ {
+  "ID": 334,
+  "ItemName": "Dogey",
+  "Cost": 25
+ },
+ {
+  "ID": 335,
+  "ItemName": "Black Cat",
+  "Cost": 28
+ },
+ {
+  "ID": 336,
+  "ItemName": "Reindeer",
+  "Cost": 30
+ },
+ {
+  "ID": 337,
+  "ItemName": "Fairy",
+  "Cost": 30
+ },
+ {
+  "ID": 338,
+  "ItemName": "Green Pumpkin 2019",
+  "Cost": 30
+ },
+ {
+  "ID": 339,
+  "ItemName": "Rudolph",
+  "Cost": 32
+ },
+ {
+  "ID": 340,
+  "ItemName": "Red Pumpkin",
+  "Cost": 35
+ },
+ {
+  "ID": 341,
+  "ItemName": "Nobledragon",
+  "Cost": 35
+ },
+ {
+  "ID": 342,
+  "ItemName": "Red Pumpkin 2019",
+  "Cost": 35
+ },
+ {
+  "ID": 343,
+  "ItemName": "Zombie Dog",
+  "Cost": 35
+ },
+ {
+  "ID": 344,
+  "ItemName": "Vampire Bat",
+  "Cost": 40
+ },
+ {
+  "ID": 345,
+  "ItemName": "Santa",
+  "Cost": 40
+ },
+ {
+  "ID": 346,
+  "ItemName": "Blue Pumpkin",
+  "Cost": 45
+ },
+ {
+  "ID": 347,
+  "ItemName": "Overseer Eye",
+  "Cost": 55
+ },
+ {
+  "ID": 348,
+  "ItemName": "Eyeball",
+  "Cost": 55
+ },
+ {
+  "ID": 349,
+  "ItemName": "Purple Pumpkin",
+  "Cost": 60
+ },
+ {
+  "ID": 350,
+  "ItemName": "Jetstream",
+  "Cost": 60
+ },
+ {
+  "ID": 351,
+  "ItemName": "Chroma Fire Bear",
+  "Cost": 10
+ },
+ {
+  "ID": 352,
+  "ItemName": "Chroma Fire Pig",
+  "Cost": 12
+ },
+ {
+  "ID": 353,
+  "ItemName": "Chroma Fire Dog",
+  "Cost": 15
+ },
+ {
+  "ID": 354,
+  "ItemName": "Chroma Fire Bat",
+  "Cost": 18
+ },
+ {
+  "ID": 355,
+  "ItemName": "Chroma Fire Fox",
+  "Cost": 20
+ },
+ {
+  "ID": 356,
+  "ItemName": "Chroma Fire Bunny",
+  "Cost": 22
+ },
+ {
+  "ID": 357,
+  "ItemName": "Chroma Fire Cat",
+  "Cost": 25
+ }
+]
