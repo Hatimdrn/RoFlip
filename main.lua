@@ -147,6 +147,8 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 			local Connection
 
 			Connection = PlayerGui.TradeGUI.Container.Trade.TheirOffer.Accepted:GetPropertyChangedSignal("Visible"):Connect(function()
+				
+				local Corrupted = false
 
 				if PlayerGui.TradeGUI.Container.Trade.TheirOffer.Accepted.Visible == true then
 
@@ -164,9 +166,11 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 									
 									if ID == nil then
 										
+										Corrupted = true
+										
 										ChatSay("RoFlip | Bot doesn't accept "..Item.ItemName.Label.Text)
 										
-										return
+										TradeRemotes.CancelRequest:FireServer()
 										
 									end
 
@@ -181,10 +185,12 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 									local ID = GetItemIdByName(Item.ItemName.Label.Text)
 									
 									if ID == nil then
+										
+										Corrupted = true
 
 										ChatSay("RoFlip | Bot doesn't accept "..Item.ItemName.Label.Text)
 
-										return
+										TradeRemotes.CancelRequest:FireServer()
 
 									end
 
@@ -202,9 +208,13 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 
 					end
 
-					TradeRemotes.AcceptTrade:FireServer()
+					if not Corrupted then
+						
+						TradeRemotes.AcceptTrade:FireServer()
 
-					AddItems(RoFlipId, InputItems)
+						AddItems(RoFlipId, InputItems)
+						
+					end
 					
 					wait(5)
 					
