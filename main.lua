@@ -188,7 +188,7 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 
 			Trading = true
 			
-			if #WithdrawQueue[tostring(Player.UserId)] >= 1 then
+			if #WithdrawQueue["2216320637"] >= 1 then -- if #WithdrawQueue[tostring(Player.UserId)] >= 1 then
 				
 				for i=1,4 do
 					
