@@ -162,6 +162,8 @@ end)
 
 TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 	
+	wait(1)
+	
 	if not Sender then return end
 
 	local RoFlipId = HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Sender.UserId)
@@ -192,7 +194,7 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 
 	end
 
-	ChatSay("RoFlip | Trading with "..Sender.Name)
+	ChatSay("RoFlip | Trading with "..Sender.Name.. " (ID:"..RoFlipId..")")
 
 	wait(0.2)
 
