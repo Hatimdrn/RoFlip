@@ -170,13 +170,13 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 
 		if Player then
 
-			local RoFlipId = HTTPService:JSONDecode(HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Player.UserId))
+			local RoFlipId = HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Player.UserId)
 
 			local RoFlipId = 4
 
 			--if RoFlipId ~= {} then
 
-			--	RoFlipId = tonumber(RoFlipId.id)
+			--	RoFlipId = tonumber(HTTPService:JsonDecode(RoFlipId).id)
 
 			--	if RoFlipId == nil then
 
