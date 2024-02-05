@@ -162,7 +162,7 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 
 		if Player then
 
-			local RoFlipId = HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..tostring(Player.UserId))
+			local RoFlipId = HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Player.UserId)
 
 			--local RoFlipId = 4
 
