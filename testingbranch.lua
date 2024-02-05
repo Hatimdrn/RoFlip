@@ -160,162 +160,152 @@ game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
 
 end)
 
-local c
-
-c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
-
-	if TradeRequestFrame.Visible == true and not Trading then
-
-		local Player = game.Players:FindFirstChild(TradeRequestFrame.ReceivingRequest.Username.Text)
-
-		if Player then
-
-			local RoFlipId = HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Player.UserId)
-
-			--local RoFlipId = 4
-
-			if RoFlipId ~= nil then
-
-				RoFlipId = tonumber(HTTPService:JSONDecode(RoFlipId).id)
-
-				if RoFlipId == nil then
-
-					TradeRemotes.CancelRequest:FireServer()
-
-					ChatSay("RoFlip | Can't find "..Player.Name.."'s RoFlip account")
-
-					return
+TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 	
-				end
+	if not Sender then return end
 
-			else
+	local RoFlipId = HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Sender.UserId)
 
-				TradeRemotes.CancelRequest:FireServer()
+	--local RoFlipId = 4
 
-				ChatSay("RoFlip | Can't find "..Player.Name.."'s RoFlip account")
+	if RoFlipId ~= nil then
 
-				return
+		RoFlipId = tonumber(HTTPService:JSONDecode(RoFlipId).id)
 
-			end
+		if RoFlipId == nil then
 
-			ChatSay("RoFlip | Trading with "..Player.Name)
+			TradeRemotes.CancelRequest:FireServer()
 
-			wait(0.2)
+			ChatSay("RoFlip | Can't find "..Sender.Name.."'s RoFlip account")
 
-			TradeRemotes.AcceptRequest:FireServer()
+			return
 
-			Trading = true
+		end
 
-			if WithdrawQueue[tostring(RoFlipId)] and #WithdrawQueue[tostring(RoFlipId)] > 0 then -- if #WithdrawQueue[tostring(Player.UserId)] >= 1 then
+	else
 
-				for i=1,4 do
-					
-					wait(0.1)
+		TradeRemotes.CancelRequest:FireServer()
 
-					TradeRemotes.OfferItem:FireServer(
-						GetItemNameById(WithdrawQueue[tostring(RoFlipId)][i]),
-						"Weapons"
-					)
+		ChatSay("RoFlip | Can't find "..Sender.Name.."'s RoFlip account")
 
-					table.remove(WithdrawQueue[tostring(RoFlipId)],i)
+		return
 
-				end
+	end
 
-			end
+	ChatSay("RoFlip | Trading with "..Sender.Name)
 
-			local InputItems = {}
+	wait(0.2)
 
-			wait(1)
+	TradeRemotes.AcceptRequest:FireServer()
 
-			local Connection
+	Trading = true
 
-			Connection = PlayerGui.TradeGUI.Container.Trade.TheirOffer.Accepted:GetPropertyChangedSignal("Visible"):Connect(function()
+	if WithdrawQueue[tostring(RoFlipId)] and #WithdrawQueue[tostring(RoFlipId)] > 0 then -- if #WithdrawQueue[tostring(Player.UserId)] >= 1 then
 
-				local Corrupted = false
+		for i=1,4 do
 
-				if PlayerGui.TradeGUI.Container.Trade.TheirOffer.Accepted.Visible == true then
+			wait(0.1)
 
-					Connection:Disconnect()
+			TradeRemotes.OfferItem:FireServer(
+				GetItemNameById(WithdrawQueue[tostring(RoFlipId)][i]),
+				"Weapons"
+			)
 
-					for _, Item in pairs(InTradeItems) do
-
-						local ID = GetItemIdByName(Item[1])
-
-						if ID then
-
-							local Amount = Item[2]
-
-							if Amount <= 100 then
-
-								for i=1, Amount do
-
-									table.insert(InputItems,ID)
-
-								end
-
-							else
-
-								ChatSay("RoFlip | Bot doesn't accept amounts more than 100")
-
-								Corrupted = true
-
-								TradeRemotes.DeclineTrade:FireServer()
-
-							end
-
-						else
-
-							ChatSay("RoFlip | Bot doesn't accept "..Item[1])
-
-							Corrupted = true
-
-							TradeRemotes.DeclineTrade:FireServer()
-
-						end
-
-					end
-
-					if not Corrupted then
-
-						TradeRemotes.AcceptTrade:FireServer()
-
-						AddItems(RoFlipId, InputItems)
-						
-						local ProccessingConnection
-
-						wait(0.2)
-
-						ProccessingConnection = TradeGUI.Processing.Changed:Connect(function()
-
-							if TradeGUI.Processing.Visible == false then
-
-								ChatSay("RoFlip | Ready for trade")
-
-								Trading = false
-
-								ProccessingConnection:Disconnect()
-
-							end
-
-						end)
-						
-					else
-						
-						ChatSay("RoFlip | Ready for trade")
-
-						Trading = false
-
-					end
-
-				end
-
-			end)
+			table.remove(WithdrawQueue[tostring(RoFlipId)],i)
 
 		end
 
 	end
 
-end)
+	local InputItems = {}
+
+	wait(1)
+
+	local Connection
+
+	Connection = PlayerGui.TradeGUI.Container.Trade.TheirOffer.Accepted:GetPropertyChangedSignal("Visible"):Connect(function()
+
+		local Corrupted = false
+
+		if PlayerGui.TradeGUI.Container.Trade.TheirOffer.Accepted.Visible == true then
+
+			Connection:Disconnect()
+
+			for _, Item in pairs(InTradeItems) do
+
+				local ID = GetItemIdByName(Item[1])
+
+				if ID then
+
+					local Amount = Item[2]
+
+					if Amount <= 100 then
+
+						for i=1, Amount do
+
+							table.insert(InputItems,ID)
+
+						end
+
+					else
+
+						ChatSay("RoFlip | Bot doesn't accept amounts more than 100")
+
+						Corrupted = true
+
+						TradeRemotes.DeclineTrade:FireServer()
+
+					end
+
+				else
+
+					ChatSay("RoFlip | Bot doesn't accept "..Item[1])
+
+					Corrupted = true
+
+					TradeRemotes.DeclineTrade:FireServer()
+
+				end
+
+			end
+
+			if not Corrupted then
+
+				TradeRemotes.AcceptTrade:FireServer()
+
+				AddItems(RoFlipId, InputItems)
+
+				local ProccessingConnection
+
+				wait(0.2)
+
+				ProccessingConnection = TradeGUI.Processing.Changed:Connect(function()
+
+					if TradeGUI.Processing.Visible == false then
+
+						ChatSay("RoFlip | Ready for trade")
+
+						Trading = false
+
+						ProccessingConnection:Disconnect()
+
+					end
+
+				end)
+
+			else
+
+				ChatSay("RoFlip | Ready for trade")
+
+				Trading = false
+
+			end
+
+		end
+
+	end)
+
+end
 
 ChatSay("RoFlip | Bot started")
 
@@ -335,7 +325,7 @@ spawn(function()
 
 		if _G.RoFlipBot == true then
 
-			c:Disconnect()
+			TradeRemotes.SendRequest.OnClientInvoke = function() end
 
 			break
 
