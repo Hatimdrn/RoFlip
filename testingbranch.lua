@@ -170,9 +170,9 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 
 		if Player then
 
-			--local RoFlipId = HTTPService:JSONDecode(HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Player.UserId))
+			local RoFlipId = HTTPService:JSONDecode(HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Player.UserId))
 
-			--local RoFlipId = 4
+			local RoFlipId = 4
 
 			--if RoFlipId ~= {} then
 
@@ -276,10 +276,8 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 					if not Corrupted then
 
 						TradeRemotes.AcceptTrade:FireServer()
-						
-						print(HTTPService:JSONEncode(InputItems))
 
-						--AddItems(RoFlipId, InputItems)
+						AddItems(RoFlipId, InputItems)
 						
 						local ProccessingConnection
 
