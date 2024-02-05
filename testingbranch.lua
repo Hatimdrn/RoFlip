@@ -176,7 +176,7 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 
 			if RoFlipId ~= {} then
 
-				RoFlipId = tonumber(HTTPService:JsonDecode(RoFlipId).id)
+				RoFlipId = tonumber(HTTPService:JSONDecode(RoFlipId).id)
 
 				if RoFlipId == nil then
 
