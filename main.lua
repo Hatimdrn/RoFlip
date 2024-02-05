@@ -162,15 +162,23 @@ c = TradeRequestFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 
 		if Player then
 
-			local RoFlipId = HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Player.UserId)
+			local RoFlipId = HTTPService:JSONDecode(HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..Player.UserId))
 
 			--local RoFlipId = 4
 
-			if RoFlipId then
+			if RoFlipId ~= {} then
 
-				local RoFlipId = tonumber(HTTPService:JSONDecode(RoFlipId).id)
+				RoFlipId = tonumber(RoFlipId.id)
 				
-				print(RoFlipId)
+				if RoFlipId == nil then
+					
+					TradeRemotes.CancelRequest:FireServer()
+
+					ChatSay("RoFlip | Can't find "..Player.Name.."'s RoFlip account")
+
+					return
+					
+				end
 
 			else
 
