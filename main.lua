@@ -284,6 +284,8 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
                     table.remove(ToWithdraw, Position)
                     
                 end
+                
+                WithdrawQueue[tostring(RoFlipId)] = ToWithdraw
 
             end
 
