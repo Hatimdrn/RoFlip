@@ -155,6 +155,24 @@ local function GetTypeFromId(Id)
     
 end
 
+local function CountValuesInTable(Table, Value)
+
+    local n = 0
+
+    for _, Value_ in pairs(Table) do
+
+        if Value_ == Value then
+
+            n += 1
+
+        end
+
+    end
+
+    return n
+
+end
+
 -- Lets go!
 
 ChatSay("RoFlip | Bot is now starting...")
@@ -238,13 +256,26 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
                     wait(0.1)
 
                     local Id = ToWithdraw[i]
-
-                    TradeRemotes.OfferItem:FireServer(
-                        GetItemNameById(Id),
-                        GetTypeFromId(Id)
-                    )
-
-                    table.remove(ToWithdraw,i)
+                    local Amount = CountValuesInTable(ToWithdraw, Id)
+                    
+                    for i=1, Amount do
+                        
+                        TradeRemotes.OfferItem:FireServer(
+                            GetItemNameById(Id),
+                            GetTypeFromId(Id)
+                        )
+                        
+                    end
+                    
+                    for Index, Value in pairs(ToWithdraw) do
+                        
+                        if Value == Id then
+                            
+                            table.remove(ToWithdraw, Index)
+                            
+                        end
+                        
+                    end
 
                 end
 
