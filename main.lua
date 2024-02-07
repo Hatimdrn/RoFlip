@@ -305,7 +305,7 @@ TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
         
         TradeRemotes.AcceptTrade:FireServer()
 
-        AddItems(CurrentTradeData.RoflipId, Items)
+        AddItems(CurrentTradeData.RoflipId, CurrentTradeData.Items)
 
         wait(5)
         
