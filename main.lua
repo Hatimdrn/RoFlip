@@ -170,11 +170,12 @@ Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubuserconte
 -- After initialization
 
 local CurrentTradeData = {
-	
-	Trading = false,
-	User = nil,
-	RoflipId = nil
-	
+
+    Trading = false,
+    User = nil,
+    RoflipId = nil,
+    Items = {}
+
 }
 
 TradeRemotes.DeclineTrade.OnClientEvent:Connect(function()
@@ -185,7 +186,8 @@ TradeRemotes.DeclineTrade.OnClientEvent:Connect(function()
 
             Trading = false,
             User = nil,
-            RoflipId = nil
+            RoflipId = nil,
+            Items = {}
 
         }
         
@@ -258,70 +260,68 @@ end
 
 game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
 
-	if CurrentTradeData.RoflipId ~= nil then
-        
-        if Trade.Player1.Accepted then
+    for _, Item in pairs(Trade["Player1"].Offer) do
 
-            local Items = {}
+        local ID = GetItemIdByName(Item[1])
 
-            for _, Item in pairs(Trade.Player1.Offer) do
+        if ID then
 
-                local ID = GetItemIdByName(Item[1])
+            local Amount = Item[2]
 
-                if ID then
+            if Amount <= 100 then
 
-                    local Amount = Item[2]
+                for i=1, Amount do
 
-                    if Amount <= 100 then
-
-                        for i=1, Amount do
-
-                            table.insert(Items,ID)
-
-                        end
-
-                    else
-
-                        ChatSay("RoFlip | Bot doesn't accept amounts more than 100")
-
-                        TradeRemotes.DeclineTrade:FireServer()
-
-                        return
-
-                    end
-
-                else
-
-                    ChatSay("RoFlip | Bot doesn't accept "..Item[1])
-
-                    TradeRemotes.DeclineTrade:FireServer()
-
-                    return
+                    table.insert(CurrentTradeData.Items,ID)
 
                 end
 
+            else
+
+                ChatSay("RoFlip | Bot doesn't accept amounts more than 100")
+
+                TradeRemotes.DeclineTrade:FireServer()
+
+                return
+
             end
 
-            TradeRemotes.AcceptTrade:FireServer()
+        else
 
-            AddItems(CurrentTradeData.RoflipId, Items)
+            ChatSay("RoFlip | Bot doesn't accept "..Item[1])
 
-            wait(5)
+            TradeRemotes.DeclineTrade:FireServer()
 
-            ChatSay("RoFlip | Ready for trade")
-
-            CurrentTradeData = {
-
-                Trading = false,
-                User = nil,
-                RoflipId = nil
-
-            }
+            return
 
         end
+
+    end
+end)
+
+TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
+    
+    if CurrentTradeData.RoflipId ~= nil then
+        
+        TradeRemotes.AcceptTrade:FireServer()
+
+        AddItems(CurrentTradeData.RoflipId, Items)
+
+        wait(5)
+        
+        CurrentTradeData = {
+
+            Trading = false,
+            User = nil,
+            RoflipId = nil,
+            Items = {}
+
+        }
+
+        ChatSay("RoFlip | Ready for trade")
         
     end
-
+    
 end)
 
 ChatSay("RoFlip | Bot started")
