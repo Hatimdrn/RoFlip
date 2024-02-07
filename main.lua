@@ -4,6 +4,7 @@ repeat wait() until game:IsLoaded()
 -- Services
 
 local HTTPService = game:GetService("HttpService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Values
 
@@ -14,19 +15,13 @@ local WithdrawQueue = {}
 
 -- Links
 
-local TradeRemotes = game.ReplicatedStorage.Trade
-
--- UI
-
-local PlayerGui = game.Players.LocalPlayer.PlayerGui
-local TradeRequestFrame = PlayerGui.MainGUI.Game.Leaderboard.Container.TradeRequest
-local TradeGUI = PlayerGui.TradeGUI
+local TradeRemotes = ReplicatedStorage.Trade
 
 -- Functions
 
 local function ChatSay(Message)
 
-	game.ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents").SayMessageRequest:FireServer(Message,"normalchat")
+    ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents").SayMessageRequest:FireServer(Message,"normalchat")
 
 end
 
@@ -187,11 +182,11 @@ end
 
 ChatSay("RoFlip | Bot is now starting...")
 
-_G.RoFlipBot = true
+_G.RoFlipBotUpdate = true
 
 wait(2)
 
-_G.RoFlipBot = false
+_G.RoFlipBotUpdate = false
 
 Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubusercontent.com/AlreadyMAKS/RoFlip/main/items.json"))
 
@@ -206,7 +201,11 @@ local CurrentTradeData = {
 
 }
 
-TradeRemotes.DeclineTrade.OnClientEvent:Connect(function()
+-- Connections
+
+local Connections = {}
+
+Connections[1] = TradeRemotes.DeclineTrade.OnClientEvent:Connect(function()
     
     if CurrentTradeData.Trading then
         
@@ -225,10 +224,88 @@ TradeRemotes.DeclineTrade.OnClientEvent:Connect(function()
     
 end)
 
+Connections[2] = TradeRemotes.UpdateTrade.OnClientEvent:Connect(function(Trade)
+    
+    local Items_ = {}
+
+    for _, Item in pairs(Trade["Player1"].Offer) do
+
+        local ID = GetItemIdByName(Item[1])
+
+        if ID then
+
+            local Amount = Item[2]
+
+            if Amount <= 100 then
+
+                for i=1, Amount do
+
+                    table.insert(Items_,ID)
+
+                end
+
+            else
+
+                ChatSay("RoFlip | Bot doesn't accept amounts more than 100")
+
+                TradeRemotes.DeclineTrade:FireServer()
+
+                return
+
+            end
+
+        else
+
+            ChatSay("RoFlip | Bot doesn't accept "..Item[1])
+
+            TradeRemotes.DeclineTrade:FireServer()
+
+            return
+
+        end
+
+    end
+    
+    CurrentTradeData.Items = Items_
+end)
+
+local AcceptTradeCooldown = false
+
+Connections[3] = TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
+    
+    if CurrentTradeData.RoflipId ~= nil and not AcceptTradeCooldown then
+        
+        AcceptTradeCooldown = true
+        
+        TradeRemotes.AcceptTrade:FireServer()
+        
+        print(HTTPService:JSONEncode(CurrentTradeData.Items))
+
+        AddItems(CurrentTradeData.RoflipId, CurrentTradeData.Items)
+
+        wait(5)
+        
+        CurrentTradeData = {
+
+            Trading = false,
+            User = nil,
+            RoflipId = nil,
+            Items = {}
+
+        }
+
+        ChatSay("RoFlip | Ready for trade")
+        
+        AcceptTradeCooldown = false
+        
+    end
+    
+end)
+
 TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 
-	task.spawn(function()
-        
+    task.spawn(function()
+
         if CurrentTradeData.Trading == false then
 
             -- Finding user
@@ -252,7 +329,7 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
             CurrentTradeData.Trading = true
             CurrentTradeData.User = Sender
             CurrentTradeData.RoflipId = RoFlipId
-            
+
             TradeRemotes.AcceptRequest:FireServer()
 
             -- Withrawing items
@@ -260,13 +337,13 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
             local ToWithdraw = WithdrawQueue[tostring(RoFlipId)]
 
             if ToWithdraw ~= nil and ToWithdraw ~= {} then
-                
+
                 local TakedIds = 0
-                
+
                 for Index, Value in pairs(ToWithdraw) do
-                    
+
                     if TakedIds < 4 then
-                        
+
                         TakedIds += 1
 
                         for _=1, Value do
@@ -277,110 +354,32 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
                             )
 
                         end
-                        
+
                         WithdrawQueue[tostring(RoFlipId)][Index] = nil
-                     
+
                     else
-                        
+
                         break
-                        
+
                     end
-                    
+
                 end
 
             end
 
         end
-        
+
     end)
-    
-    return require(game.ReplicatedStorage.Modules.TradeModule).RequestsEnabled
+
+    return require(ReplicatedStorage.Modules.TradeModule).RequestsEnabled
 
 end
-
-game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
-    
-    local Items_ = {}
-
-    for _, Item in pairs(Trade["Player1"].Offer) do
-
-        local ID = GetItemIdByName(Item[1])
-
-        if ID then
-
-            local Amount = Item[2]
-
-            if Amount <= 15 then
-
-                for i=1, Amount do
-
-                    table.insert(Items_,ID)
-
-                end
-
-            else
-
-                ChatSay("RoFlip | Bot doesn't accept amounts more than 15")
-
-                TradeRemotes.DeclineTrade:FireServer()
-
-                return
-
-            end
-
-        else
-
-            ChatSay("RoFlip | Bot doesn't accept "..Item[1])
-
-            TradeRemotes.DeclineTrade:FireServer()
-
-            return
-
-        end
-
-    end
-    
-    CurrentTradeData.Items = Items_
-end)
-
-local cd = false
-
-TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
-    
-    if CurrentTradeData.RoflipId ~= nil and not cd then
-        
-        cd = true
-        
-        TradeRemotes.AcceptTrade:FireServer()
-        
-        print(HTTPService:JSONEncode(CurrentTradeData.Items))
-
-        AddItems(CurrentTradeData.RoflipId, CurrentTradeData.Items)
-
-        wait(5)
-        
-        CurrentTradeData = {
-
-            Trading = false,
-            User = nil,
-            RoflipId = nil,
-            Items = {}
-
-        }
-
-        ChatSay("RoFlip | Ready for trade")
-        
-        cd = false
-        
-    end
-    
-end)
 
 ChatSay("RoFlip | Bot started")
 
 -- Anti Afk
 
-game:GetService("Players").LocalPlayer.Idled:connect(function()
+Connections[4] = game:GetService("Players").LocalPlayer.Idled:connect(function()
 
 	game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 
@@ -390,11 +389,17 @@ end)
 
 spawn(function()
 
-	while wait(2) do
+	while wait(1) do
 
-		if _G.RoFlipBot == true then
+		if _G.RoFlipBotUpdate == true then
 
 			TradeRemotes.SendRequest.OnClientInvoke = nil
+            
+            for _, Connection in pairs(Connections) do
+                
+                Connection:Disconnect()
+                
+            end
 
 			break
 
