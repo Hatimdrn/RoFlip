@@ -213,7 +213,7 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 
 		end
         
-        wait(2)
+        wait(10)
 
 		ChatSay("RoFlip | Trading with "..Sender.Name.. " (ID:"..RoFlipId..")")
 
