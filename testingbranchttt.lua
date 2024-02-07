@@ -205,17 +205,17 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 
 		if RoFlipId == nil then
 
-			TradeRemotes.CancelRequest:FireServer()
+			--TradeRemotes.CancelRequest:FireServer()
 
 			ChatSay("RoFlip | Can't find "..Sender.Name.."'s RoFlip account")
 
 			return
 
 		end
+        
+        task.wait(1)
 
 		ChatSay("RoFlip | Trading with "..Sender.Name.. " (ID:"..RoFlipId..")")
-
-		task.wait(0.2)
 
 		TradeRemotes.AcceptRequest:FireServer()
 
