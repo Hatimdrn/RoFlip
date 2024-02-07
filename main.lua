@@ -256,7 +256,7 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
                     local Id = ToWithdraw[i]
                     local Amount = CountValuesInTable(ToWithdraw, Id)
                     
-                    for i=1, Amount do
+                    for _=1, Amount do
                         
                         wait(0.1)
                         
@@ -267,16 +267,10 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
                         
                     end
                     
-                    table.remove(ToWithdraw, i)
-                    
-                    for Index, Value in pairs(ToWithdraw) do
-                        
-                        if Value == Id then
-                            
-                            table.remove(ToWithdraw, Index)
-                            
-                        end
-                        
+                    while table.find(ToWithdraw,i) do
+
+                        table.remove(ToWithdraw,table.find(ToWithdraw,i))
+
                     end
 
                 end
