@@ -254,7 +254,7 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
         
     end)
     
-    return _G.RequestsEnabled
+    return true
 
 end
 
