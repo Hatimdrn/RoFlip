@@ -259,6 +259,8 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 end
 
 game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
+    
+    CurrentTradeData.Items = {}
 
     for _, Item in pairs(Trade["Player1"].Offer) do
 
@@ -299,9 +301,13 @@ game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
     end
 end)
 
+local cd = false
+
 TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
     
-    if CurrentTradeData.RoflipId ~= nil then
+    if CurrentTradeData.RoflipId ~= nil and not cd then
+        
+        cd = true
         
         TradeRemotes.AcceptTrade:FireServer()
         
@@ -321,6 +327,8 @@ TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
         }
 
         ChatSay("RoFlip | Ready for trade")
+        
+        cd = false
         
     end
     
