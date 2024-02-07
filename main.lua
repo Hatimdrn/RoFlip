@@ -108,8 +108,18 @@ local function UpdateWithdrawQueue()
         end
 
         for _, Item in pairs(Data["user_items"]) do
+            
+            local ItemId = Item["item_id"]
 
-            table.insert(WithdrawQueue[RoFlipId], Item["item_id"])
+            if WithdrawQueue[RoFlipId][ItemId] == nil then
+                
+                WithdrawQueue[RoFlipId][ItemId] = 1
+                
+            else
+                
+                WithdrawQueue[RoFlipId][ItemId] += 1
+                
+            end
 
         end
 
@@ -251,41 +261,32 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 
             if ToWithdraw ~= nil and ToWithdraw ~= {} then
                 
-                local TakedIds = {}
-                local ToRemove = {}
+                local TakedIds = 0
                 
                 for Index, Value in pairs(ToWithdraw) do
                     
-                    if #TakedIds < 4 and table.find(TakedIds, Value) == nil then
+                    if TakedIds < 4 then
                         
-                        table.insert(TakedIds, Value)
-                        table.insert(ToRemove, Index)
+                        TakedIds += 1
+
+                        for _=1, Value do
+
+                            TradeRemotes.OfferItem:FireServer(
+                                GetItemNameById(Index),
+                                GetTypeFromId(Index)
+                            )
+
+                        end
                         
-                        TradeRemotes.OfferItem:FireServer(
-                            GetItemNameById(Value),
-                            GetTypeFromId(Value)
-                        )
+                        WithdrawQueue[tostring(RoFlipId)][Index] = nil
+                     
+                    else
                         
-                    elseif table.find(TakedIds, Value) then
-                        
-                        table.insert(ToRemove, Index)
-                        
-                        TradeRemotes.OfferItem:FireServer(
-                            GetItemNameById(Value),
-                            GetTypeFromId(Value)
-                        )
+                        break
                         
                     end
                     
                 end
-                
-                for _, Position in pairs(ToRemove) do
-                    
-                    table.remove(ToWithdraw, Position)
-                    
-                end
-                
-                WithdrawQueue[tostring(RoFlipId)] = ToWithdraw
 
             end
 
