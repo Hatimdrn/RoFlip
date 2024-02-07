@@ -304,6 +304,8 @@ TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
     if CurrentTradeData.RoflipId ~= nil then
         
         TradeRemotes.AcceptTrade:FireServer()
+        
+        print(HTTPService:JSONEncode(CurrentTradeData.Items))
 
         AddItems(CurrentTradeData.RoflipId, CurrentTradeData.Items)
 
