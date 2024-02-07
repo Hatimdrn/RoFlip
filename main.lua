@@ -215,17 +215,15 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 
             end
 
-            wait(1)
-
             ChatSay("RoFlip | Trading with "..Sender.Name.. " (ID:"..RoFlipId..")")
-
-            TradeRemotes.AcceptRequest:FireServer()
 
             -- Binding user
 
             CurrentTradeData.Trading = true
             CurrentTradeData.User = Sender
             CurrentTradeData.RoflipId = RoFlipId
+            
+            TradeRemotes.AcceptRequest:FireServer()
 
             -- Withrawing items
 
@@ -254,7 +252,7 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
         
     end)
     
-    return true
+    return require(game.ReplicatedStorage.Modules.TradeModule).RequestsEnabled
 
 end
 
