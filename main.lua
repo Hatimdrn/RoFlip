@@ -310,7 +310,7 @@ game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
 
             local Amount = Item[2]
 
-            if Amount <= 100 then
+            if Amount <= 15 then
 
                 for i=1, Amount do
 
@@ -320,7 +320,7 @@ game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
 
             else
 
-                ChatSay("RoFlip | Bot doesn't accept amounts more than 100")
+                ChatSay("RoFlip | Bot doesn't accept amounts more than 15")
 
                 TradeRemotes.DeclineTrade:FireServer()
 
