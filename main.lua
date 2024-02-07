@@ -250,29 +250,39 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
             local ToWithdraw = WithdrawQueue[tostring(RoFlipId)]
 
             if ToWithdraw ~= nil and ToWithdraw ~= {} then
-
-                for i=1,4 do
-
-                    local Id = ToWithdraw[i]
-                    local Amount = CountValuesInTable(ToWithdraw, Id)
+                
+                local TakedIds = {}
+                local ToRemove = {}
+                
+                for Index, Value in pairs(ToWithdraw) do
                     
-                    for _=1, Amount do
+                    if #TakedIds < 4 and table.find(TakedIds, Value) == nil then
                         
-                        wait(0.1)
+                        table.insert(TakedIds, Value)
+                        table.insert(ToRemove, Index)
                         
                         TradeRemotes.OfferItem:FireServer(
-                            GetItemNameById(Id),
-                            GetTypeFromId(Id)
+                            GetItemNameById(Value),
+                            GetTypeFromId(Value)
+                        )
+                        
+                    elseif table.find(TakedIds, Value) then
+                        
+                        table.insert(ToRemove, Index)
+                        
+                        TradeRemotes.OfferItem:FireServer(
+                            GetItemNameById(Value),
+                            GetTypeFromId(Value)
                         )
                         
                     end
                     
-                    while table.find(ToWithdraw,i) do
-
-                        table.remove(ToWithdraw,table.find(ToWithdraw,i))
-
-                    end
-
+                end
+                
+                for _, Position in pairs(ToRemove) do
+                    
+                    table.remove(ToWithdraw, Position)
+                    
                 end
 
             end
