@@ -253,12 +253,12 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 
                 for i=1,4 do
 
-                    wait(0.1)
-
                     local Id = ToWithdraw[i]
                     local Amount = CountValuesInTable(ToWithdraw, Id)
                     
                     for i=1, Amount do
+                        
+                        wait(0.1)
                         
                         TradeRemotes.OfferItem:FireServer(
                             GetItemNameById(Id),
@@ -266,6 +266,8 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
                         )
                         
                     end
+                    
+                    table.remove(ToWithdraw, i)
                     
                     for Index, Value in pairs(ToWithdraw) do
                         
