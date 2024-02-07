@@ -197,58 +197,64 @@ end)
 
 TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
 
-	if CurrentTradeData.Trading == false then
+	task.spawn(function()
         
-        -- Finding user
-		
-		local RoFlipId = GetLocalIdFromUserId(Sender.UserId)
+        if CurrentTradeData.Trading == false then
 
-		if RoFlipId == nil then
+            -- Finding user
 
-			--TradeRemotes.CancelRequest:FireServer()
+            local RoFlipId = GetLocalIdFromUserId(Sender.UserId)
 
-			ChatSay("RoFlip | Can't find "..Sender.Name.."'s RoFlip account")
+            if RoFlipId == nil then
 
-			return
+                --TradeRemotes.CancelRequest:FireServer()
 
-		end
+                ChatSay("RoFlip | Can't find "..Sender.Name.."'s RoFlip account")
+
+                return
+
+            end
+
+            wait(1)
+
+            ChatSay("RoFlip | Trading with "..Sender.Name.. " (ID:"..RoFlipId..")")
+
+            TradeRemotes.AcceptRequest:FireServer()
+
+            -- Binding user
+
+            CurrentTradeData.Trading = true
+            CurrentTradeData.User = Sender
+            CurrentTradeData.RoflipId = RoFlipId
+
+            -- Withrawing items
+
+            local ToWithdraw = WithdrawQueue[tostring(RoFlipId)]
+
+            if ToWithdraw ~= nil and ToWithdraw ~= {} then
+
+                for i=1,4 do
+
+                    wait(0.1)
+
+                    local Id = ToWithdraw[i]
+
+                    TradeRemotes.OfferItem:FireServer(
+                        GetItemNameById(Id),
+                        GetTypeFromId(Id)
+                    )
+
+                    table.remove(ToWithdraw,i)
+
+                end
+
+            end
+
+        end
         
-        wait(10)
-
-		ChatSay("RoFlip | Trading with "..Sender.Name.. " (ID:"..RoFlipId..")")
-
-		TradeRemotes.AcceptRequest:FireServer()
-
-		-- Binding user
-		
-		CurrentTradeData.Trading = true
-		CurrentTradeData.User = Sender
-		CurrentTradeData.RoflipId = RoFlipId
-        
-        -- Withrawing items
-        
-        local ToWithdraw = WithdrawQueue[tostring(RoFlipId)]
-
-        if ToWithdraw ~= nil and ToWithdraw ~= {} then
-
-			for i=1,4 do
-
-				wait(0.1)
-                
-                local Id = ToWithdraw[i]
-
-				TradeRemotes.OfferItem:FireServer(
-                    GetItemNameById(Id),
-                    GetTypeFromId(Id)
-				)
-
-                table.remove(ToWithdraw,i)
-
-			end
-
-		end
-		
-	end
+    end)
+    
+    return _G.RequestsEnabled
 
 end
 
