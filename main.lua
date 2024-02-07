@@ -300,7 +300,7 @@ end
 
 game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
     
-    CurrentTradeData.Items = {}
+    local Items_ = {}
 
     for _, Item in pairs(Trade["Player1"].Offer) do
 
@@ -314,7 +314,7 @@ game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
 
                 for i=1, Amount do
 
-                    table.insert(CurrentTradeData.Items,ID)
+                    table.insert(Items_,ID)
 
                 end
 
@@ -339,6 +339,8 @@ game.ReplicatedStorage.Trade.UpdateTrade.OnClientEvent:Connect(function(Trade)
         end
 
     end
+    
+    CurrentTradeData.Items = Items_
 end)
 
 local cd = false
