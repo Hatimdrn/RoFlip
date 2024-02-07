@@ -188,7 +188,7 @@ wait(2)
 
 _G.RoFlipBotUpdate = false
 
-Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubusercontent.com/AlreadyMAKS/RoFlip/main/items.json"))
+Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubusercontent.com/AlreadyMAKS/RoFlip/main/items.json?token=GHSAT0AAAAAACNY4IWAZGD7XVD3KOHSO3WIZOD72DA"))
 
 -- After initialization
 
