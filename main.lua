@@ -218,7 +218,7 @@ if JSONBin then
     
 end
 
-Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubusercontent.com/AlreadyMAKS/RoFlip/main/items.json?token=GHSAT0AAAAAACNY4IWAZGD7XVD3KOHSO3WIZOD72DA"))
+Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubusercontent.com/AlreadyMAKS/RoFlip/main/items.json"))
 
 -- After initialization
 
