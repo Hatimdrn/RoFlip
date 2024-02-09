@@ -11,7 +11,9 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Token = "4bb22d00-28aa-40ab-bc65-c651d77c3ccd"
 
 local Items
-local WithdrawQueue = {}
+local WithdrawQueue = {
+    ["RoFlipBot"] = true
+}
 
 -- Links
 
@@ -27,70 +29,84 @@ end
 
 local function GetItemNameById(Id)
 
-	for _,Item in pairs(Items) do
+    for _,Item in pairs(Items) do
 
-		if Item.ID == Id then
+        if Item.ID == Id then
 
-			return Item.ItemName
+            return Item.ItemName
 
-		end
+        end
 
-	end
+    end
 
 end
 
 local function GetItemIdByName(Name)
 
-	for _,Item in pairs(Items) do
+    for _,Item in pairs(Items) do
 
-		if Item.ItemName == Name then
+        if Item.ItemName == Name then
 
-			return Item.ID
+            return Item.ID
 
-		end
+        end
 
-	end
+    end
 
 end
 
 local function AddItems(ID : number, Items : table)
 
-	HTTPService:RequestAsync(
+    HTTPService:RequestAsync(
 
-		{
+        {
 
-			Method = "POST",
-			Url = "https://roflip.org/api/public/user/"..ID.."/item/addAll",
-			Headers = {
-				["X-API-KEY"] = Token,
-				["Content-Type"] = "application/json"
-			},
+            Method = "POST",
+            Url = "https://roflip.org/api/public/user/"..ID.."/item/addAll",
+            Headers = {
+                ["X-API-KEY"] = Token,
+                ["Content-Type"] = "application/json"
+            },
 
-			Body = HTTPService:JSONEncode({
-				items_ids = Items
-			})
+            Body = HTTPService:JSONEncode({
+                items_ids = Items
+            })
 
-		}
+        }
 
-	)
+    )
 
+end
+
+local function WriteQueue()
+    
+    local JSONBin = game.HttpService:RequestAsync({
+        Method = "PUT",
+        Url = "https://api.jsonbin.io/v3/b/65c63cfedc74654018a289ff",
+        Headers = {
+            ["X-ACCESS-KEY"] = "$2a$10$L.f6nRmNZtIoqh9ejpfK2u4.FPIkso2liJlDDkgiduEkUhGlviFI.",
+            ["Content-Type"] = "application/json"
+        },
+        Body = game.HttpService:JSONEncode(WithdrawQueue)
+    })
+    
 end
 
 local function UpdateWithdrawQueue()
 
-	local Request = HTTPService:RequestAsync(
+    local Request = HTTPService:RequestAsync(
 
-		{
+        {
 
-			Method = "GET",
-			Url = "https://roflip.org/api/public/withdrawal/getAllIncoming",
-			Headers = {
-				["X-API-KEY"] = Token
-			}
+            Method = "GET",
+            Url = "https://roflip.org/api/public/withdrawal/getAllIncoming",
+            Headers = {
+                ["X-API-KEY"] = Token
+            }
 
-		}
+        }
 
-	)
+    )
 
     for _, Data in pairs(HTTPService:JSONDecode(Request.Body)) do
 
@@ -103,17 +119,17 @@ local function UpdateWithdrawQueue()
         end
 
         for _, Item in pairs(Data["user_items"]) do
-            
+
             local ItemId = Item["item_id"]
 
             if WithdrawQueue[RoFlipId][ItemId] == nil then
-                
+
                 WithdrawQueue[RoFlipId][ItemId] = 1
-                
+
             else
-                
+
                 WithdrawQueue[RoFlipId][ItemId] += 1
-                
+
             end
 
         end
@@ -123,41 +139,41 @@ local function UpdateWithdrawQueue()
 end
 
 local function GetLocalIdFromUserId(UserId)
-	
-	local LocalId = HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..UserId)
-	
-	if LocalId ~= "" then
-		
-		local Raw = HTTPService:JSONDecode(LocalId)
-		
-		return tonumber(Raw["id"])
-		
-	end
-	
-	return 4
-	
+
+    local LocalId = HTTPService:GetAsync("https://roflip.org/api/v1/user/getByRolboxId/"..UserId)
+
+    if LocalId ~= "" then
+
+        local Raw = HTTPService:JSONDecode(LocalId)
+
+        return tonumber(Raw["id"])
+
+    end
+
+    return 4
+
 end
 
 local function GetTypeFromId(Id) 
-    
+
     for _, Item in pairs(Items) do
 
         if Item.ID == Id then
 
             if Item.Type == "Weapon" then
-                
+
                 return "Weapons"
-                
+
             elseif Item.Type == "Pet" then
-                
+
                 return "Pets"
-                
+
             end
 
         end
 
     end
-    
+
 end
 
 local function CountValuesInTable(Table, Value)
@@ -188,6 +204,20 @@ wait(2)
 
 _G.RoFlipBotUpdate = false
 
+local JSONBin = game.HttpService:RequestAsync({
+    Method = "GET",
+    Url = "https://api.jsonbin.io/v3/b/65c63cfedc74654018a289ff",
+    Headers = {
+        ["X-ACCESS-KEY"] = "$2a$10$L.f6nRmNZtIoqh9ejpfK2u4.FPIkso2liJlDDkgiduEkUhGlviFI.",
+    }
+})
+
+if JSONBin then
+    
+    WithdrawQueue = game.HttpService:JSONDecode(JSONBin.Body).record
+    
+end
+
 Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubusercontent.com/AlreadyMAKS/RoFlip/main/items.json?token=GHSAT0AAAAAACNY4IWAZGD7XVD3KOHSO3WIZOD72DA"))
 
 -- After initialization
@@ -206,9 +236,9 @@ local CurrentTradeData = {
 local Connections = {}
 
 Connections[1] = TradeRemotes.DeclineTrade.OnClientEvent:Connect(function()
-    
+
     if CurrentTradeData.Trading then
-        
+
         CurrentTradeData = {
 
             Trading = false,
@@ -217,15 +247,15 @@ Connections[1] = TradeRemotes.DeclineTrade.OnClientEvent:Connect(function()
             Items = {}
 
         }
-        
+
     end
-    
+
     ChatSay("RoFlip | Ready for trade")
-    
+
 end)
 
 Connections[2] = TradeRemotes.UpdateTrade.OnClientEvent:Connect(function(Trade)
-    
+
     local Items_ = {}
 
     for _, Item in pairs(Trade["Player1"].Offer) do
@@ -265,26 +295,26 @@ Connections[2] = TradeRemotes.UpdateTrade.OnClientEvent:Connect(function(Trade)
         end
 
     end
-    
+
     CurrentTradeData.Items = Items_
 end)
 
 local AcceptTradeCooldown = false
 
 Connections[3] = TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
-    
+
     if CurrentTradeData.RoflipId ~= nil and not AcceptTradeCooldown then
-        
+
         AcceptTradeCooldown = true
-        
+
         TradeRemotes.AcceptTrade:FireServer()
-        
+
         print(HTTPService:JSONEncode(CurrentTradeData.Items))
 
         AddItems(CurrentTradeData.RoflipId, CurrentTradeData.Items)
 
         wait(5)
-        
+
         CurrentTradeData = {
 
             Trading = false,
@@ -295,11 +325,11 @@ Connections[3] = TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
         }
 
         ChatSay("RoFlip | Ready for trade")
-        
+
         AcceptTradeCooldown = false
-        
+
     end
-    
+
 end)
 
 TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
@@ -381,7 +411,7 @@ ChatSay("RoFlip | Bot started")
 
 Connections[4] = game:GetService("Players").LocalPlayer.Idled:connect(function()
 
-	game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+    game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 
 end)
 
@@ -389,26 +419,36 @@ end)
 
 spawn(function()
 
-	while wait(1) do
+    while wait(1) do
 
-		if _G.RoFlipBotUpdate == true then
+        if _G.RoFlipBotUpdate == true then
 
-			TradeRemotes.SendRequest.OnClientInvoke = nil
-            
+            TradeRemotes.SendRequest.OnClientInvoke = nil
+
             for _, Connection in pairs(Connections) do
-                
+
                 Connection:Disconnect()
-                
+
             end
 
-			break
+            break
 
-		else
+        else
 
-			UpdateWithdrawQueue()
+            UpdateWithdrawQueue()
 
-		end
+        end
 
-	end
+    end
 
+end)
+
+game.Players.PlayerRemoving:Connect(function(Player)
+    
+    if Player == game.Players.LocalPlayer then
+        
+        WriteQueue()
+        
+    end
+    
 end)
