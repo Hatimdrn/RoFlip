@@ -27,6 +27,17 @@ local function ChatSay(Message)
 
 end
 
+local function deepCopy(original)
+    local copy = {}
+    for k, v in pairs(original) do
+        if type(v) == "table" then
+            v = deepCopy(v)
+        end
+        copy[k] = v
+    end
+    return copy
+end
+
 local function GetItemNameById(Id)
 
     for _,Item in pairs(Items) do
@@ -76,20 +87,6 @@ local function AddItems(ID : number, Items : table)
 
     )
 
-end
-
-local function WriteQueue()
-    
-    local JSONBin = game.HttpService:RequestAsync({
-        Method = "PUT",
-        Url = "https://api.jsonbin.io/v3/b/65c63cfedc74654018a289ff",
-        Headers = {
-            ["X-ACCESS-KEY"] = "$2a$10$L.f6nRmNZtIoqh9ejpfK2u4.FPIkso2liJlDDkgiduEkUhGlviFI.",
-            ["Content-Type"] = "application/json"
-        },
-        Body = game.HttpService:JSONEncode(WithdrawQueue)
-    })
-    
 end
 
 local function UpdateWithdrawQueue()
@@ -204,20 +201,6 @@ wait(2)
 
 _G.RoFlipBotUpdate = false
 
-local JSONBin = game.HttpService:RequestAsync({
-    Method = "GET",
-    Url = "https://api.jsonbin.io/v3/b/65c63cfedc74654018a289ff",
-    Headers = {
-        ["X-ACCESS-KEY"] = "$2a$10$L.f6nRmNZtIoqh9ejpfK2u4.FPIkso2liJlDDkgiduEkUhGlviFI.",
-    }
-})
-
-if JSONBin then
-    
-    WithdrawQueue = game.HttpService:JSONDecode(JSONBin.Body).record
-    
-end
-
 Items = HTTPService:JSONDecode(HTTPService:GetAsync("https://raw.githubusercontent.com/AlreadyMAKS/RoFlip/main/items.json"))
 
 -- After initialization
@@ -227,7 +210,8 @@ local CurrentTradeData = {
     Trading = false,
     User = nil,
     RoflipId = nil,
-    Items = {}
+    Items = {},
+    ToRemove = {}
 
 }
 
@@ -244,7 +228,8 @@ Connections[1] = TradeRemotes.DeclineTrade.OnClientEvent:Connect(function()
             Trading = false,
             User = nil,
             RoflipId = nil,
-            Items = {}
+            Items = {},
+            ToRemove = {}
 
         }
 
@@ -312,6 +297,12 @@ Connections[3] = TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
         print(HTTPService:JSONEncode(CurrentTradeData.Items))
 
         AddItems(CurrentTradeData.RoflipId, CurrentTradeData.Items)
+        
+        for _,Index in pairs(CurrentTradeData.ToRemove) do
+            
+            WithdrawQueue[tostring(CurrentTradeData.RoflipId)][Index] = nil
+            
+        end
 
         wait(5)
 
@@ -320,7 +311,8 @@ Connections[3] = TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
             Trading = false,
             User = nil,
             RoflipId = nil,
-            Items = {}
+            Items = {},
+            ToRemove = {}
 
         }
 
@@ -367,10 +359,12 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
             local ToWithdraw = WithdrawQueue[tostring(RoFlipId)]
 
             if ToWithdraw ~= nil and ToWithdraw ~= {} then
+                
+                local WithdrawCopy = deepCopy(ToWithdraw)
 
                 local TakedIds = 0
 
-                for Index, Value in pairs(ToWithdraw) do
+                for Index, Value in pairs(WithdrawCopy) do
 
                     if TakedIds < 4 then
 
@@ -384,8 +378,10 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
                             )
 
                         end
+                        
 
-                        WithdrawQueue[tostring(RoFlipId)][Index] = nil
+                        WithdrawCopy[Index] = nil
+                        table.insert(CurrentTradeData.ToRemove, Index)
 
                     else
 
@@ -441,14 +437,4 @@ spawn(function()
 
     end
 
-end)
-
-game.Players.PlayerRemoving:Connect(function(Player)
-    
-    if Player == game.Players.LocalPlayer then
-        
-        WriteQueue()
-        
-    end
-    
 end)
