@@ -147,7 +147,7 @@ local function GetLocalIdFromUserId(UserId)
 
     end
 
-    return 4
+    return nil
 
 end
 
