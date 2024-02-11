@@ -147,7 +147,7 @@ local function GetLocalIdFromUserId(UserId)
 
     end
 
-    return nil
+    return 4
 
 end
 
@@ -211,7 +211,8 @@ local CurrentTradeData = {
     User = nil,
     RoflipId = nil,
     Items = {},
-    ToRemove = {}
+    ToRemove = {},
+    StartTick = nil
 
 }
 
@@ -229,7 +230,8 @@ Connections[1] = TradeRemotes.DeclineTrade.OnClientEvent:Connect(function()
             User = nil,
             RoflipId = nil,
             Items = {},
-            ToRemove = {}
+            ToRemove = {},
+            StartTick = nil
 
         }
 
@@ -312,7 +314,8 @@ Connections[3] = TradeRemotes.AcceptTrade.OnClientEvent:Connect(function()
             User = nil,
             RoflipId = nil,
             Items = {},
-            ToRemove = {}
+            ToRemove = {},
+            StartTick = nil
 
         }
 
@@ -351,6 +354,7 @@ TradeRemotes.SendRequest.OnClientInvoke = function(Sender)
             CurrentTradeData.Trading = true
             CurrentTradeData.User = Sender
             CurrentTradeData.RoflipId = RoFlipId
+            CurrentTradeData.StartTick = tick()
 
             TradeRemotes.AcceptRequest:FireServer()
 
@@ -432,6 +436,31 @@ spawn(function()
         else
 
             UpdateWithdrawQueue()
+            
+            if CurrentTradeData.Trading == true then
+                
+                if tick() - CurrentTradeData.StartTick >= 60 then
+                    
+                    TradeRemotes.DeclineTrade:FireServer()
+                    
+                    ChatSay("RoFlip | Trade timed out")
+                    
+                    CurrentTradeData = {
+
+                        Trading = false,
+                        User = nil,
+                        RoflipId = nil,
+                        Items = {},
+                        ToRemove = {},
+                        StartTick = nil
+
+                    }
+                    
+                    ChatSay("RoFlip | Ready for trade")
+                    
+                end
+                
+            end
 
         end
 
